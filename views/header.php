@@ -2,7 +2,7 @@
 <!-- <?include_once('../public/admin_functions.php')?> -->
 <html>
 	<head>
-		<link href="/css/styles.css" rel="stylesheet"/>
+		<link href="/public/css/styles.css" rel="stylesheet"/>
 		<?if (isset($title)): ?>
 			<title>Camagru: <?= htmlspecialchars($title) ?></title>
 		<?else: ?>
