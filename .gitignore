@@ -1,0 +1,7 @@
+._*
+.nfs*
+*.out
+*.swp
+*.o
+*.a
+*.DS_Store
