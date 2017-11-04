@@ -1,5 +1,5 @@
 <?php
-	$conn = new PDO("pgsql:host=192.168.99.101;port=8080;dbname=cama_db;user=cama_user;password=cama_pw") or die("unable to connect to database\n");
+	$conn = new PDO("pgsql:host=127.0.0.1;port=8080;dbname=cama_db;user=cama_user;password=cama_pw") or die("unable to connect to database\n");
 
 	try{
 		// display a message if connected to the PostgreSQL successfully
