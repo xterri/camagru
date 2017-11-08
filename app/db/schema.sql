@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS cama_db.users (
 -- insert test users
 -- ----------------------------------------------------------------------------
 INSERT INTO cama_db.users (username, password, email) VALUES 
--- password: pwd123
+-- password: myPass 
   ('terri', '$2y$10$cNq1pqJy7g.759cWvpOUM.lYkh5AcSEVDzkWWedzq0iaEYora2K2q', 't@t.t')
 -- password: festivus
 , ('george', '$2y$10$sTeO7dfHeAkG06PtP2PEhOU1VYpN.D4m/QmVRd0XAGp1kstM8rqjS', 'g@yahoo.com')
