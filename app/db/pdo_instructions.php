@@ -163,6 +163,13 @@ $db = "cama_db";
 		$email = 'j@doo.com';
 		$statement->execute();
 
+	// OR COULD USE THIS INSTEAD AND EXECUTE AS AN ASSOC. ARRAY?
+		// $statement->execute(array(
+			// ':firstname'=>$firstname,
+			// ':lastname'=>$lastname,
+			// ':email'=>$email
+		// ));
+
 		echo "New records created successfully";
 	}
 	catch (PDOException $e)
@@ -221,6 +228,7 @@ $db = "cama_db";
 /*
 ** Delete Data from a table
 */
+/*
 	try
 	{
 		$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
@@ -238,6 +246,60 @@ $db = "cama_db";
 		echo $sql."<br>".$e->getMessagee();
 	}
 	$conn = null;
+*/
 
+/*
+** Update Data in Database
+*/
+/*
+	try
+	{
+		$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
+
+		// Prepare statement
+		$stmt = $conn->prepare($sql);
+
+		// execute the query
+		$stmt->execute();
+		
+		// echo msg to say the UPDATE succeeded
+		echo $stmt->rowCount()." record UPDATED successfully";
+	}
+	catch (PDOException $e)
+	{
+		echo $sql."<br>".$e->getMessage();
+	}
+	$conn = null;
+*/
+
+/*
+** Limit Data Selections from Database
+** specify # of records to return
+*/
+/*
+	try
+	{
+		$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		// get 1 to 30 (inclusive) from table
+		$sql = "SELECT * FROM <table name> LIMIT 30";
+
+		// return 10 records, starting on record 16 (OFFSET 15) 
+		$sql = "SELECT * FROM <table name> LIMIT 10 OFFSET 15";
+			// "SELECT * FROM <table name> LIMIT 15, 10";
+
+		$stmt->execute();
+		echo "Return 10 records? Requires table html?";
+	}
+	catch (PDOException $e)
+	{
+		echo $sql."<br>".$e->getMessage();
+	}
+	$conn = null;
+*/
 
 ?>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- <?include_once('../public/admin_functions.php')?> -->
 <html>
 	<head>
 		<link href="/public/css/styles.css" rel="stylesheet"/>
@@ -13,14 +12,14 @@
 		<div class="container">
 			<div id="top">
 				<ul class="nav" align="right">
-					<li><a href="index.php">Home</a></li>
+					<li><a href="/public/index.php">Home</a></li>
 					<?if (!empty($_SESSION["id"])): ?>
 						<li><a href="#">Lemme Take a Selfie</a></li>
 						<li><a href="#">Account Settings</a></li>
 						<li><a href="#">Fine, Leave Me</a></li>
 					<?else: ?>
 						<li><a href="#">Log In</a></li>
-						<li><a href="#">Register</a></li>
+						<li><a href="/public/register.php">Register</a></li>
 					<?endif ?>
 				</ul>
 			</div>
