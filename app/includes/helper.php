@@ -20,7 +20,7 @@
 // Redirects user to location passed
 	function redirect($location)
 	{
-		if (!header_sent($file, $line))
+		if (!headers_sent($file, $line))
 		{
 			header("Location: {$location}");
 			exit ;

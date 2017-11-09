@@ -19,7 +19,7 @@
 		elseif (!(preg_match('~[A-Z]~', $_POST["password"])) ||
 				!(preg_match('~[a-z]~', $_POST["password"])) ||
 				!(preg_match('~\d~', $_POST["password"]))) {
-			render("error.php", ["message"=>"Password not secure enough. Password must include at least one uppercase and one digit"]);
+			render("error.php", ["message"=>"Your password must include at least one uppercase and one digit"]);
 		}
 		// check that a valid email is entered, unnecessary?
 		elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {

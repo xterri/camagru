@@ -19,7 +19,8 @@ try
 	password VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL UNIQUE,
 	creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	privilege VARCHAR(255) NOT NULL DEFAULT 'user'
+	privilege VARCHAR(255) NOT NULL DEFAULT 'user',
+	validation BOOLEAN NOT NULL DEFAULT 'false'
 	);";
 	$conn->exec($sql);
 }

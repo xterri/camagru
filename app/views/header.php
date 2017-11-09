@@ -16,7 +16,7 @@
 					<?if (!empty($_SESSION["id"])): ?>
 						<li><a href="#">Lemme Take a Selfie</a></li>
 						<li><a href="#">Account Settings</a></li>
-						<li><a href="#">Fine, Leave Me</a></li>
+						<li><a href="/public/logout.php">Fine, Leave Me</a></li>
 					<?else: ?>
 						<li><a href="#">Log In</a></li>
 						<li><a href="/public/register.php">Register</a></li>
