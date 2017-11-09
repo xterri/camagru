@@ -32,20 +32,20 @@
 			$user = "cama_user";
 			$pw = "password";
 
-			//try {
-			//	$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
-			//	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			//}
-			//catch (PDOException $e) {
-			//	render("error.php", ["message"=>"Unable to create user account"."<br>Error: ".$e->getMessage()]);
-			//}
+			try {
+				$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
+				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			}
+			catch (PDOException $e) {
+				render("error.php", ["message"=>"Unable to create user account"."<br>Error: ".$e->getMessage()]);
+			}
 			$user_db = $_POST["user"];
 			$pw_db = password_hash($_POST["password"], PASSWORD_DEFAULT);
 			$email = $_POST["email"];
 
 			// check if username already exists
-			$check_user = $conn->prepare("SELECT user FROM users WHERE user = :user");
-			$check_user->bindParam(':user', $user_db);
+			$check_user = $conn->prepare("SELECT username FROM users WHERE username = :username");
+			$check_user->bindParam(':username', $user_db);
 			$check_user->execute();
 			if ($check_user->rowCount() > 0) {
 				render("error.php", ["message"=>"Username already exists."]);
@@ -59,9 +59,9 @@
 				render("error.php", ["message"=>"Email already in use."]);
 			}
 
-			$stmt = $conn->prepare("INSERT INTO users (user, email, password) 
-									VALUES (:user, :email, :password);");
-			$stmt->bindParam(':user', $user_db);
+			$stmt = $conn->prepare("INSERT INTO users (username, email, password) 
+									VALUES (:username, :email, :password);");
+			$stmt->bindParam(':username', $user_db);
 			$stmt->bindParam(':email', $email);
 			$stmt->bindParam(':password', $pw_db);
 			$stmt->execute();
@@ -69,7 +69,7 @@
 			$id = $conn->lastInsertId();
 			session_start();
 			$_SESSION["id"] = $id;
-			redirect("/public/index.php");
+			redirect("index.php");
 		}
 	}
 ?>

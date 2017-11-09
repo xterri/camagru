@@ -5,7 +5,7 @@
 		// set PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		// display a message if connected to the PostgreSQL successfully
-		echo "Connected to the <strong>cama_db</strong> database successfully!";
+			// echo "Connected to the <strong>cama_db</strong> database successfully!";
 	}
 	catch (PDOException $e)
 	{
