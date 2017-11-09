@@ -2,11 +2,6 @@
 
 require_once("../db/connect.php");
 
-$host = "db";
-$db = "cama_db";
-$user = "cama_user";
-$pw = "password";
-
 // Create table 
 try
 {

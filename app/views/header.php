@@ -18,7 +18,7 @@
 						<li><a href="#">Account Settings</a></li>
 						<li><a href="/public/logout.php">Fine, Leave Me</a></li>
 					<?else: ?>
-						<li><a href="#">Log In</a></li>
+						<li><a href="/public/login.php">Log In</a></li>
 						<li><a href="/public/register.php">Register</a></li>
 					<?endif ?>
 				</ul>
