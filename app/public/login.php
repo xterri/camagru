@@ -23,7 +23,7 @@
 		$check_user->bindParam(':email', $_POST["email"]);
 		$check_user->execute();
 		if ($check_user->rowCount() <= 0) {
-			render("error.php", ["message"=>"Unable to look up user"]);
+			render("error.php", ["message"=>"User does not exist"]);
 		}
 		
 		// check password entered

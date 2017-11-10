@@ -13,9 +13,10 @@ try
 	username VARCHAR(255) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL UNIQUE,
+	confirm_code INTEGER ULL, 
 	creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	privilege VARCHAR(255) NOT NULL DEFAULT 'user',
-	validation BOOLEAN NOT NULL DEFAULT 'false'
+	validation BOOLEAN NOT NULL DEFAULT 'f'
 	);";
 	$conn->exec($sql);
 }
