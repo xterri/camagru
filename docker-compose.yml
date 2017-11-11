@@ -22,3 +22,9 @@ services:
         environment:
             DATABASE_URL: postgres://cama_user@db/cama_db
         env_file: .db_creds.env
+
+    mailhog:
+        image: mailhog/mailhog:v1.0.0
+        ports:
+            - "1025:1025"
+            - "8025:8025"
