@@ -1,0 +1,70 @@
+{
+	"Total":1,
+	"Count":1,
+	"Start":0,
+	"Items":
+	[{
+		"ID":"72Mcduz4fcvlcKIHrkCp0OKLMixhoQPod_xXVgtwWTM=@mailhog.example",
+		"From":
+		{
+			"Relays":null,
+			"Mailbox":"root",
+			"Domain":"4338374b84cb",
+			"Params":""
+		},
+		"To":
+		[{
+				"Relays":null,
+				"Mailbox":"t",
+				"Domain":"t.t",
+				"Params":""
+		}],
+		"Content":
+		{
+			"Headers":
+			{
+				"From":
+				[
+					"donotreply@camagru.com"
+				],
+				"Message-ID":
+				[
+					"72Mcduz4fcvlcKIHrkCp0OKLMixhoQPod_xXVgtwWTM=@mailhog.example"
+				],
+				"Received":
+				[
+					"from localhost by mailhog.example (MailHog)\r\n          id 72Mcduz4fcvlcKIHrkCp0OKLMixhoQPod_xXVgtwWTM=@mailhog.example; Sat, 11 Nov 2017 05:24:25 +0000"
+				],
+				"Return-Path":
+				[
+					"\u003croot@4338374b84cb\u003e"
+				],
+				"Subject":
+				[
+					"Verify Your Email on Camagru"
+				],
+				"To":
+				[
+					"t@t.t"
+				]
+			},
+			"Body":"Confirm Your Email\r\n\t\t\t\t\tClick the link below to verify your account\r\n\t\t\t\t\thttp://192.168.99.100:8088/activate.php?username=t\u0026code=1746833061",
+			"Size":223,
+			"MIME":null
+		},
+		"Created":"2017-11-11T05:24:25.554162855Z",
+		"MIME":null,
+		"Raw":
+		{
+			"From":"root@4338374b84cb",
+			"To":
+			[
+				"t@t.t"
+			],
+			"Data":"To: t@t.t\r\nSubject: Verify Your Email on Camagru\r\nFrom: donotreply@camagru.com\r\n\r\nConfirm Your Email\r\n\t\t\t\t\tClick the link below to verify your account\r\n\t\t\t\t\thttp://192.168.99.100:8088/activate.php?username=t\u0026code=1746833061",
+			"Helo":"localhost"
+		}
+	}]
+}
+
+
