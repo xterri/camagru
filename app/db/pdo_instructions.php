@@ -86,7 +86,7 @@ $db = "cama_db";
 		$last_id = $conn->lastInsertId();
 		echo "Last inserted ID: ".$last_id;
 	}
-	catch (PDOException $e)
+:x
 	{
 		echo $sql."<br>".$e->getMessage();
 	}

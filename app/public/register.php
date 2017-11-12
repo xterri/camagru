@@ -68,7 +68,7 @@
 				// ideally would require full domain name but using server ip address
 			$msg = "Confirm Your Email
 					Click the link below to verify your account
-					http://192.168.99.100:8088/activate.php?username=$user_db&code=$confirm_code";
+					http://192.168.99.100:8088/public/activate.php?username=$user_db&code=$confirm_code";
 			
 			// requires "mail(<email address>, <subject title>, <msg>, <sender/src email>)" function
 				// may require an actual web server in order to send the emails

@@ -31,13 +31,22 @@
 		if (password_verify($_POST["password"], $db_pw->password))
 		{
 			// get user's unique id and set it to $_SESSION
-			$get_id = $conn->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
+			$get_id = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
 			$get_id->bindParam(':email', $_POST["email"]);
 			$get_id->execute();
 			
-			$id = $get_id->fetch(PDO::FETCH_OBJ);
-			$_SESSION["id"] = $id->id;
-			redirect("/public/index.php");
+			$results = $get_id->fetch(PDO::FETCH_ASSOC);
+			if ($results['confirm_code'] == 0 && $results['validation'] == TRUE)
+			{
+				$id = $results['id'];
+				$_SESSION["id"] = $id;
+				redirect("/public/index.php");
+			}
+			else
+			{
+				// maybe create another page for users to be able to "resend" the activation email
+				render("error.php", ["message"=>"Please check your email and activate your account."]);
+			}
 		}
 		render("error.php", ["message"=>"Incorrect Password"]);
 	}
