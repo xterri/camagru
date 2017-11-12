@@ -1,0 +1,2 @@
+implement a check system or something that requires account activation first
+	ex. user can't access their own user contents unless they've activated their account
