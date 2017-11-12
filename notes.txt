@@ -1,2 +1,5 @@
-implement a check system or something that requires account activation first
+- add a "resend" email function / page for users to get another email for account activation
+- add a "forgot your password" / change your password and user account settings
+
+- implement a check system or something that requires account activation first
 	ex. user can't access their own user contents unless they've activated their account
