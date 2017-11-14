@@ -72,7 +72,6 @@
 			
 			// requires "mail(<email address>, <subject title>, <msg>, <sender/src email>)" function
 				// may require an actual web server in order to send the emails
-			
 			mail($email, "Verify Your Email on Camagru", $msg, "From: donotreply@camagru.com");
 		
 			// will need to pass registeration values & render the button click to an "register complete" page 
