@@ -11,5 +11,6 @@
 </form>
 <br />
 	<div style="font-size: smaller">
-		or <a href="register.php">Register</a> for an account
+		<a href="register.php">Register</a> for an account
+		<br/><a href="forgot.php">Forgot Password?</a>
 	</div>
