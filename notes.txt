@@ -1,5 +1,1 @@
 - create user account settings when logged in (change pw, change emails, delete account)
-- fix / edit when validation link is activated for password reset (save code in session and update values after post is received so user can continue having access to change it until it's correctly changed? / refreshes the same page until all requirements met)
-
-- implement a check system or something that requires account activation first
-	ex. user can't access their own user contents unless they've activated their account

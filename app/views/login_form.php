@@ -1,3 +1,4 @@
+<h3><?= htmlspecialchars($message) ?></h3>
 <form action="login.php" method="post">
 	<div class="form-group">
 		<input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email" type="email"/>

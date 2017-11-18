@@ -1,3 +1,4 @@
+<h3><?= htmlspecialchars($message) ?></h3>
 <form action="reset.php" method="post">
 	<br />
 	<div class="form-group">
