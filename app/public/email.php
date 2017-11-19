@@ -11,7 +11,9 @@
 			$name = $results["username"];
 			$email = $results["email"];
 			if (password_verify($_POST["pw"], $pw_db)) {
-				// send activation email to new email for confirmation
+				// send activation email to old email for confirmation
+					// good or bad idea? should it just change to the new email?
+					// or send a link to 'undo' the changes if user did not request it?
 				$new_email = $_POST["new_email"];
 				$confirm_code = rand();
 				$msg = "Click the link below to confirm the new email change
