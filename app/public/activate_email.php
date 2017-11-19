@@ -23,6 +23,7 @@
 			update_email($user_db, $email); 
 			// set session_id if successful
 			$_SESSION["id"] = $id;
+			$_SESSION["name"] = $user_db;
 			render("success.php", ["title"=>"Email Confirmation", "message"=>"Your email has been changed."]);
 		}
 		else

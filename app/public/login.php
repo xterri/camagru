@@ -11,14 +11,6 @@
 				render("login_form.php", ["message"=>"Email Required"]);
 			if (empty($_POST["password"]))
 				render("login_form.php", ["message"=>"Password Required"]);
-			
-			try {
-				$conn = new PDO("pgsql:host=$host;dbname=$db", $user, $pw);
-				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			}
-			catch (PDOException $e) {
-				render("error.php", ["message"=>"Trouble connecting to the server / database."."<br>Error: ".$e->getMessage()]);
-			}
 			// check if account exists 
 			if (!email_exists($_POST["email"]))
 				render("login_form.php", ["message"=>"Email / User does not exist"]);
@@ -31,6 +23,7 @@
 				{
 					$id = $results['id'];
 					$_SESSION["id"] = $id;
+					$_SESSION["name"] = $results['username'];
 					redirect("/public/index.php");
 				}
 				// maybe create another page for users to be able to "resend" the activation email

@@ -58,6 +58,7 @@
 
 			// set session_id if successful
 			$_SESSION["id"] = $id;
+			$_SESSION["name"] = $user_id;
 			$_SESSION['user'] = NULL;
 			render("success.php", ["message"=>"Your password has been reset."]);
 		}

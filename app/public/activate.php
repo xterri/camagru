@@ -21,6 +21,7 @@
 			update_validation($username, 0, 't');
 			// set session_id if successful
 			$_SESSION["id"] = $id;
+			$_SESSION["name"] = $user_db;
 			render("success.php", ["title"=>"Email Confirmation", "message"=>"Your account is now activated."]);
 		}
 		else
