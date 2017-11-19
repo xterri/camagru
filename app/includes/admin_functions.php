@@ -21,20 +21,19 @@ function email_exists($email) {
 	return (0);
 }
 
-function add_user($name, $email, $password, $code) {
-	global $conn;
-	$query = $conn->prepare("INSERT INTO users (username, email, password, confirm_code) VALUES (:username, :email, :password, :confirm_code);");
-	$query->bindParam(':username', $name);
-	$query->bindParam(':email', $email);
-	$query->bindParam(':password', $password);
-	$query->bindParam(':confirm_code', $code);
-	$query->execute();
-}
-
 function get_user_info_by_email($email) {
 	global $conn;
 	$query = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
 	$query->bindParam(':email', $email);
+	$query->execute();
+	$results = $query->fetch(PDO::FETCH_ASSOC);
+	return $results ? : [];
+}
+
+function get_user_info_by_id($id) {
+	global $conn;
+	$query = $conn->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+	$query->bindParam(':id', $id);
 	$query->execute();
 	$results = $query->fetch(PDO::FETCH_ASSOC);
 	return $results ? : [];
@@ -67,6 +66,24 @@ function update_password($name, $password) {
 	$query = $conn->prepare("UPDATE users SET password = :password WHERE username = :username;");
 	$query->bindParam(':username', $name);
 	$query->bindParam(':password', $password);
+	$query->execute();
+}
+
+function update_email($name, $email) {
+	global $conn;
+	$query = $conn->prepare("UPDATE users SET email = :email WHERE username = :username;");
+	$query->bindParam(':username', $name);
+	$query->bindParam(':email', $email);
+	$query->execute();
+}
+
+function add_user($name, $email, $password, $code) {
+	global $conn;
+	$query = $conn->prepare("INSERT INTO users (username, email, password, confirm_code) VALUES (:username, :email, :password, :confirm_code);");
+	$query->bindParam(':username', $name);
+	$query->bindParam(':email', $email);
+	$query->bindParam(':password', $password);
+	$query->bindParam(':confirm_code', $code);
 	$query->execute();
 }
 
