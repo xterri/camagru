@@ -16,7 +16,7 @@ body {
 	position: fixed;
 	top: 0;
 	margin: 0 auto;
-	width: 100%;
+	width: 99.6%;
 	border: 2px dotted blue;
 }
 #top ul {
@@ -25,6 +25,7 @@ body {
 	padding: 1em;
 	margin: 0 auto;
 	background-color: rgba(0, 110, 255, 0.5);
+	text-align: right;
 }
 #top li {
 	display: inline;
@@ -35,8 +36,59 @@ body {
 	top: 55px;
 	bottom: 100px;
 	position: absolute;
-	overflow: auto;
+	overflow: hidden;
 	border: 20px dotted green;
+}
+.booth-setup {
+	display: inline-flex;
+	height: 99%;
+	overflow: auto;
+	border: 2px dotted yellow;
+}
+.booth {
+	display: inline-flex;
+	flex-direction: column;
+    width: 50%;
+	background-color:#ccc;
+	font-size: 2vh;
+    border:10px solid #ddd;
+    margin:0 auto;
+}
+.booth-capture-button {
+    display:block;
+	position: relative;
+    margin:10px 0;
+	padding:10px 20px;
+    background-color:cornflowerblue;
+    color:#fff;
+    text-align: center;
+    text-decoration: none;
+}
+.vid_box {
+	display:block;
+	position: relative;
+	width: 100%;
+	height: 80%;
+}
+.photo_capture {
+	display:block;
+	position:relative;
+	width: 99.2%;
+	height: 20%;
+	border: 2px solid skyblue;
+}
+#video {
+	border: 2px dotted orange;
+}
+.thumbnails, .drop_imgs {
+	display: inline-block;
+	width: 20%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 2px dotted red;
+}
+#canvas {
+	display:none;
 }
 img {
 	width: 75%;
@@ -50,7 +102,7 @@ img {
 	position: fixed;
 	bottom: 0;
 	height: 6em;
-	width: 100%;
+	width: 99.6%;
 	border: 2px dotted pink;
 	background-color: rgba(120, 35, 180, 0.5);
 }

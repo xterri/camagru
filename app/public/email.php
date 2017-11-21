@@ -16,7 +16,7 @@
 					// or send a link to 'undo' the changes if user did not request it?
 				$new_email = $_POST["new_email"];
 				$confirm_code = rand();
-				$msg = "Click the link below to confirm the new email change
+				$msg = "Click the link to confirm the new email change to $new_email: 
 						http://192.168.99.100:8088/public/activate_email.php?email=$new_email&username=$name&code=$confirm_code";
 				mail($email, "Confirm the Email Change", $msg, "From: donotreply@camagru.com");
 				update_validation($name, $confirm_code, 'f');

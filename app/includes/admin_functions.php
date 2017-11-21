@@ -1,6 +1,9 @@
 <?php
-	require_once("../db/connect.php");
+require_once("../db/connect.php");
 
+$images_dir = '../public/photos';
+
+// USER TABLE 
 function user_exists($name) {
 	global $conn;
 	$query = $conn->prepare("SELECT username FROM users WHERE username = :username");
@@ -93,4 +96,13 @@ function delete_user($id) {
 	$query->bindParam(':id', $id);
 	$query->execute();
 }
+
+// GALLERY & PHOTO TABLE
+function add_category_name($name) {
+	global $conn;
+	$query = $conn->prepare("INSERT INTO gallery_category (category_name) VALUES (:category_name);");
+	$query->bindParam(':category_name', $name);
+	$query->execute();
+}
+
 ?>
