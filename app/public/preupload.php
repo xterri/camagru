@@ -1,25 +1,23 @@
 <?php
+	// automated upload form 
 	require("../includes/helper.php");
 	require("../includes/admin_functions.php");
 
 	// initialization
 	$photo_upload_fields = '';
-	$counter = 1;
 
 	// upload more than one image => set link to:
 		// '../preupload.php?number_of_fields=20'
-	$number_of_fields = (isset($_GET['number_of_fields'])) ? (int)($_GET['number_of_fields']) : 1;
+	$number_of_fields = (isset($_GET['number_of_fields'])) ? (int)($_GET['number_of_fields']) : 5;
 
 	// build category list
 	$query = $conn->prepare("SELECT category_id, category_name FROM gallery_category");
 	$query->execute();
 	// get the list of categories available, save the data to use later for a drop down menu
 		// in html code, only call the $photo_category_list variable and it should display the results
-	while ($row = $query->fetch(PDO::FETCH_ASSOC))
-	{
-		// concat onto $photo_category_list to display/get each category in the list
-		$photo_category_list .= <<<__HTML_END <option value="$row[0]">$row[1]</option>n __HTML_END;
+	while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+		$photo_category_list[] = ["name"=>$row["category_name"],
+			"id"=>$row["category_id"]];
 	}
-
-	// build image uploading fields
+	render("preup_form.php", ["categories"=>$photo_category_list, "number_of_fields"=>$number_of_fields, "title"=>"Take a Photo"]);
 ?>
