@@ -42,6 +42,56 @@ while ($counter <= count($photos_uploaded)) {
 				//copy($photos_uploaded['tmp_name'][$counter], $images_dir.'/'.$filename);
 			// or can use the PHP 4-specific function
 			move_uploaded_file($photos_uploaded['tmp_name'][$counter], $images_dir.'/'.$filename);
+
+			// create thumbnails with uploaded images
+			// determine if image is tall or wide with GetImageSize()
+			$size = GetImageSize($images_dir.'/'.$filename);
+			// calculate thumbnail size
+			if ($size[0] > $size[1]) {
+				// wide img
+				$thumbnail_width = 100; // preset width
+				$thumbnail_height = (int)(100 * $size[1] / $size[0]); // preset width * (height dim of original img / width dim of original img)
+			}
+			else {
+				$thumbnail_width = (int)(100 * $size[0] / $size[1]); // preset height * (width dim of original img / heigh dim of original img)
+				$thumbnail_height = 100; // preset height
+			}
+			// to create thumbnails: need img handle to read uploaded img, create another img handle to create the thumbnail, resize original img via handle, save resized img with thumbnail handle
+			$gd_function_suffix = array(
+				'image/pjpeg'=>'JPEG',
+				'image/jpeg'=>'JPEG',
+				'image/gif'=>'GIF',
+				'image/bmp'=>'WBMP',
+				'image/x-png'=>'PNG'
+			);
+			// get name suffix based on mime type
+			$function_suffix = $gd_function_suffix[$filetype];
+			// build function name for ImageCreateFromSUFFIX
+			$function_to_read = 'ImageCreateFrom'.$function_suffix; //ImageCreateFromJPEG
+			// build function name for ImageSUFFIX
+			$function_to_write = 'Image'.$function_suffix; //ImageJPEG
+			
+			// read src file (holds info of original file size)
+			$src_handle = $function_to_read($images_dir.'/'.$filename);
+			// Resizing w/ GD 1.x.x >> uses ImageCreate & ImageCopyResized
+				/* if ($src_handle) { */
+				/* 	// create blank img for thumbnail (holds info for thumbnail size) */
+				/* 	$dst_handle = ImageCreate($thumbnail_width, $thumbnail_height); */
+				/* 	// resize it; arg 3-6 = coordinates for where img should be resized */
+				/* 	ImageCopyResized($dst_handle, $src_handle, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $size[0], $size[1]); */
+				/* } */
+				/* // save thumbnail */
+				/* $function_to_write($dst_handle, $images_dir.'/tb_'.$filename); */
+				/* ImageDestroy($dst_handle); */
+				// Resizing w/ GD 2.x.x (not restricted to 256 colors) >> uses ImageCreateTrueColor & ImageCopyResampled
+			if ($src_handle) {
+				// create blank img for thumbnail
+				$dst_handle = ImageCreateTrueColor($thumbnail_width, $thumbnail_height);
+				// resize it
+				ImageCopyResampled($dst_handle, $src_handle, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $size[0], $size[1]);
+			}
+			// save thumbnail
+			$function_to_write($dst_handle, $images_dir.'/tb_'.$filename);
 		}
 	}
 	$counter++;
