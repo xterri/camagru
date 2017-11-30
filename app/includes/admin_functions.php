@@ -1,7 +1,7 @@
 <?php
 require_once("../db/connect.php");
 
-$images_dir = '../public/photos';
+$images_dir = 'photos';
 
 // USER TABLE 
 function user_exists($name) {
@@ -105,4 +105,21 @@ function add_category_name($name) {
 	$query->execute();
 }
 
+function add_photo_to_gallery_and_get_id($name, $category) {
+	global $conn;
+	$query = $conn->prepare("INSERT INTO gallery_photos (photo_filename, photo_category) VALUES (:photo_filename, :photo_category);");
+	$query->bindParam(':photo_filename', $name);
+	$query->bindParam(':photo_category', $category);
+	$query->execute();
+	// return last inserted id
+	return $conn->lastInsertId();
+}
+
+function update_filename($name, $id) {
+	global $conn;
+	$query = $conn->prepare("UPDATE gallery_photos SET photo_filename = :photo_filename WHERE photo_id = :photo_id;");
+	$query->bindParam(':photo_filename', $name);
+	$query->bindParam(':photo_id', $id);
+	$query->execute();
+}
 ?>

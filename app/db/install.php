@@ -26,7 +26,6 @@ $conn->exec($sql);
 $sql = "CREATE TABLE IF NOT EXISTS gallery_photos (
 		photo_id SERIAL PRIMARY KEY NOT NULL,
 		photo_filename VARCHAR(255),
-		photo_caption TEXT,
 		photo_category BIGSERIAL NOT NULL,
 		creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 		);";
