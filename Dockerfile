@@ -6,9 +6,9 @@ ENV GOPATH /root/go
 # apk add ssmtp
 RUN apk --update --upgrade add build-base sudo go zsh 
 RUN \
-		apk add postgresql postgresql-dev php5-pgsql curl git \
+		apk add postgresql postgresql-dev php5-pgsql curl git libpng-dev \
 		&& docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql -with-pdo-pgsql=/usr/local/pgsql \
-		&& docker-php-ext-install pgsql pdo pdo_pgsql \
+		&& docker-php-ext-install pgsql pdo pdo_pgsql gd \
 		&& rm -rf /var/lib/apk/lists/*
 # Set up sendmail config. for docker container
 #RUN echo "hostname=localhost.localdomain" > /etc/ssmtp/ssmtp.conf
