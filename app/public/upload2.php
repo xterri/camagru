@@ -83,15 +83,7 @@ while ($counter <= count($photos_uploaded)) {
 				/* // save thumbnail */
 				/* $function_to_write($dst_handle, $images_dir.'/tb_'.$filename); */
 				/* ImageDestroy($dst_handle); */
-				// Resizing w/ GD 2.x.x (not restricted to 256 colors) >> uses ImageCreateTrueColor & ImageCopyResampled
-			if ($src_handle) {
-				// create blank img for thumbnail
-				$dst_handle = ImageCreateTrueColor($thumbnail_width, $thumbnail_height);
-				// resize it
-				ImageCopyResampled($dst_handle, $src_handle, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $size[0], $size[1]);
-			}
-			// save thumbnail
-			$function_to_write($dst_handle, $images_dir.'/tb_'.$filename);
+			// Resizing w/ GD 2.x.x (not restricted to 256 colors) >> uses ImageCreateTrueColor & ImageCopyResampled
 		}
 	}
 	$counter++;
